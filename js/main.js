@@ -1,12 +1,12 @@
 let windows = {};
 let zIndexCounter = 100;
-let currentUsername = localStorage.getItem("nautilusOS_username") || "User";
+let currentUsername = localStorage.getItem("funschoolworkOS_username") || "User";
 let focusedWindow = null;
 let fileSystem = {
   Photos: {},
   TextEditor: {
     "example.txt":
-      "This is an example text file.\n\nYou can edit this file using the Text Editor app.\n\nTry creating your own files by:\n1. Opening the Text Editor\n2. Writing your content\n3. Clicking Save As and entering a filename\n\nHave fun exploring NautilusOS!",
+      "This is an example text file.\n\nYou can edit this file using the Text Editor app.\n\nTry creating your own files by:\n1. Opening the Text Editor\n2. Writing your content\n3. Clicking Save As and entering a filename\n\nHave fun exploring funschoolworkOS!",
   },
 };
 let currentPath = [];
@@ -25,10 +25,10 @@ let snapKeyCapture = null;
 let snapNewLayoutKeybind = "";
 let snapNewLayoutInput = null;
 
-let loginStartTime = localStorage.getItem("nautilusOS_bootTime");
+let loginStartTime = localStorage.getItem("funschoolworkOS_bootTime");
 if (!loginStartTime) {
   loginStartTime = Date.now();
-  localStorage.setItem("nautilusOS_bootTime", loginStartTime);
+  localStorage.setItem("funschoolworkOS_bootTime", loginStartTime);
 } else {
   loginStartTime = parseInt(loginStartTime, 10);
 }
@@ -43,7 +43,7 @@ function checkFileProtocol(title = null) {
       title === "Visual Studio Code"
     );
     if (shouldShowToast && !hasShownFileProtocolToast) {
-      showToast("This feature doesn't work on file:// protocol. Please run NautilusOS from a web server.", "fa-exclamation-triangle");
+      showToast("This feature doesn't work on file:// protocol. Please run funschoolworkOS from a web server.", "fa-exclamation-triangle");
       hasShownFileProtocolToast = true;
     }
     return false;
@@ -82,7 +82,7 @@ function closeToast(btn) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  const savedBootChoice = localStorage.getItem("nautilusOS_bootChoice");
+  const savedBootChoice = localStorage.getItem("funschoolworkOS_bootChoice");
   if (savedBootChoice !== null) {
     bootSelectedIndex = parseInt(savedBootChoice, 10);
     selectBoot();
@@ -99,7 +99,7 @@ const appMetadata = {
   whatsnew: { name: "What's New", icon: "fa-star", preinstalled: true },
   appstore: { name: "App Store", icon: "fa-store", preinstalled: true },
   calculator: { name: "Calculator", icon: "fa-calculator", preinstalled: true },
-  browser: { name: "Nautilus Browser", icon: "fa-globe", preinstalled: true },
+  browser: { name: "funschoolwork Browser", icon: "fa-globe", preinstalled: true },
   cloaking: { name: "Cloaking", icon: "fa-mask", preinstalled: true },
   achievements: { name: "Achievements", icon: "fa-trophy", preinstalled: true },
   "startup-apps": {
@@ -300,7 +300,7 @@ function ensureSnapSettingsDefaults() {
 }
 
 function loadSnapSettings() {
-  const saved = localStorage.getItem("nautilusOS_snapSettings");
+  const saved = localStorage.getItem("funschoolworkOS_snapSettings");
   if (saved) {
     try {
       snapSettings = JSON.parse(saved);
@@ -313,7 +313,7 @@ function loadSnapSettings() {
 
 function saveSnapSettings() {
   if (!snapSettings) return;
-  localStorage.setItem("nautilusOS_snapSettings", JSON.stringify(snapSettings));
+  localStorage.setItem("funschoolworkOS_snapSettings", JSON.stringify(snapSettings));
 }
 
 function initializeSnapOverlay() {
@@ -1071,7 +1071,7 @@ document.addEventListener("keydown", function (e) {
 });
 
 function selectBoot() {
-  localStorage.setItem("nautilusOS_bootChoice", bootSelectedIndex);
+  localStorage.setItem("funschoolworkOS_bootChoice", bootSelectedIndex);
 
   document.getElementById("bootOptions").style.display = "none";
   document.querySelector(".boot-hint").style.display = "none";
@@ -1085,7 +1085,7 @@ function startBootSequence() {
 
   if (bootSelectedIndex === 1) {
     messages = [
-      "Starting boot sequence for NautilusOS (Command Line)...",
+      "Starting boot sequence for funschoolworkOS (Command Line)...",
       "Initializing command-line interface...",
       "Loading system utilities...",
       "- bash shell v5.1",
@@ -1097,7 +1097,7 @@ function startBootSequence() {
     ];
   } else {
     messages = [
-      "Starting boot sequence for NautilusOS...",
+      "Starting boot sequence for funschoolworkOS...",
       "Running startup functions...",
       "- startLoginClock()",
       "- updateLoginClock()",
@@ -1142,7 +1142,7 @@ function startBootSequence() {
             }, 500);
           } else {
             const setupComplete = localStorage.getItem(
-              "nautilusOS_setupComplete"
+              "funschoolworkOS_setupComplete"
             );
 
             if (!setupComplete) {
@@ -1157,7 +1157,7 @@ function startBootSequence() {
               setTimeout(() => {
                 console.log(`[BOOT LOG] ${new Date().toISOString()}: Showing login screen`);
                 const savedUsername = localStorage.getItem(
-                  "nautilusOS_username"
+                  "funschoolworkOS_username"
                 );
                 if (savedUsername) {
                   document.getElementById("username").value = savedUsername;
@@ -1207,7 +1207,7 @@ function handleCLIInput(e) {
 
     const cmdLine = document.createElement("div");
     cmdLine.className = "cli-line";
-    cmdLine.innerHTML = `<span class="cli-prompt">user@nautilusos:~$ </span>${command}`;
+    cmdLine.innerHTML = `<span class="cli-prompt">user@funschoolworkos:~$ </span>${command}`;
     terminal.insertBefore(cmdLine, terminal.lastElementChild);
 
     const output = document.createElement("div");
@@ -1261,13 +1261,13 @@ function handleCLIInput(e) {
     } else if (command === "whoami") {
       output.textContent = "User";
     } else if (command === "reset-boot") {
-      localStorage.removeItem("nautilusOS_bootChoice");
+      localStorage.removeItem("funschoolworkOS_bootChoice");
       output.innerHTML =
         '<span style="color: #4ade80;">✓ Bootloader preferences reset successfully</span><br>' +
         "The bootloader menu will appear on next page reload.";
     } else if (command === "clear") {
       terminal.innerHTML = `
-                      <div class="cli-line" style="color: var(--accent);">NautilusOS Command Line Interface v1.0</div>
+                      <div class="cli-line" style="color: var(--accent);">funschoolworkOS Command Line Interface v1.0</div>
                       <div class="cli-line" style="color: #888; margin-bottom: 1rem;">Type 'help' for available commands, 'gui' to switch to graphical mode</div>
                   `;
     } else if (command === "date") {
@@ -1283,7 +1283,7 @@ function handleCLIInput(e) {
           cliMode.style.opacity = "1";
 
           const setupComplete = localStorage.getItem(
-            "nautilusOS_setupComplete"
+            "funschoolworkOS_setupComplete"
           );
 
           if (!setupComplete) {
@@ -1293,7 +1293,7 @@ function handleCLIInput(e) {
               setup.style.opacity = "1";
             }, 50);
           } else {
-            const savedUsername = localStorage.getItem("nautilusOS_username");
+            const savedUsername = localStorage.getItem("funschoolworkOS_username");
             if (savedUsername) {
               document.getElementById("username").value = savedUsername;
             }
@@ -1379,10 +1379,10 @@ function login() {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
-  const savedUsername = localStorage.getItem("nautilusOS_username");
-  const savedPassword = localStorage.getItem("nautilusOS_password");
+  const savedUsername = localStorage.getItem("funschoolworkOS_username");
+  const savedPassword = localStorage.getItem("funschoolworkOS_password");
   const isPasswordless =
-    localStorage.getItem("nautilusOS_isPasswordless") === "true";
+    localStorage.getItem("funschoolworkOS_isPasswordless") === "true";
 
   if (!username) {
     showToast("Please enter username", "fa-exclamation-circle");
@@ -1466,7 +1466,7 @@ function login() {
         }, 1000);
       }
 
-      const showWhatsNew = localStorage.getItem("nautilusOS_showWhatsNew");
+      const showWhatsNew = localStorage.getItem("funschoolworkOS_showWhatsNew");
       if (showWhatsNew === null || showWhatsNew === "true") {
         console.log(`[LOGIN LOG] ${new Date().toISOString()}: Opening What's New app`);
         setTimeout(() => {
@@ -2244,7 +2244,7 @@ function saveToDevice() {
 }
 
 function resetBootloader() {
-  localStorage.removeItem("nautilusOS_bootChoice");
+  localStorage.removeItem("funschoolworkOS_bootChoice");
   showToast(
     "Boot preference cleared. The bootloader will appear on next reload.",
     "fa-redo"
@@ -2263,16 +2263,16 @@ function openApp(appName, editorContent = "", filename = "") {
     );
   }
   const sameBackgroundSetting = localStorage.getItem(
-    "nautilusOS_useSameBackground"
+    "funschoolworkOS_useSameBackground"
   );
   const useSameBackground =
     sameBackgroundSetting === null || sameBackgroundSetting === "true";
-  const hasWallpaper = !!localStorage.getItem("nautilusOS_wallpaper");
+  const hasWallpaper = !!localStorage.getItem("funschoolworkOS_wallpaper");
   const hasLoginWallpaper = !!localStorage.getItem(
-    "nautilusOS_loginBackground"
+    "funschoolworkOS_loginBackground"
   );
   const hasProfilePicture = !!localStorage.getItem(
-    "nautilusOS_profilePicture"
+    "funschoolworkOS_profilePicture"
   );
   const apps = {
     files: {
@@ -2345,10 +2345,10 @@ function openApp(appName, editorContent = "", filename = "") {
       icon: "fas fa-terminal",
       content: `
               <div class="terminal" id="terminalContent">
-                  <div class="terminal-line" style="color: var(--accent);">NautilusOS Terminal v1.0</div>
+                  <div class="terminal-line" style="color: var(--accent);">funschoolworkOS Terminal v1.0</div>
                   <div class="terminal-line" style="color: #888; margin-bottom: 1rem;">Type 'help' for available commands</div>
                   <div class="terminal-line">
-                      <span class="terminal-prompt">user@nautilusos:~$ </span><input type="text" class="terminal-input" id="terminalInput" onkeypress="handleTerminalInput(event)">
+                      <span class="terminal-prompt">user@funschoolworkos:~$ </span><input type="text" class="terminal-input" id="terminalInput" onkeypress="handleTerminalInput(event)">
                   </div>
               </div>
           `,
@@ -2393,15 +2393,15 @@ function openApp(appName, editorContent = "", filename = "") {
       height: 600,
     },
     browser: {
-      title: "Nautilus Browser",
+      title: "funschoolwork Browser",
       icon: "fas fa-globe",
       content: (() => {
-        if (!checkFileProtocol("Nautilus Browser")) {
+        if (!checkFileProtocol("funschoolwork Browser")) {
           return `
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 3rem; background: rgba(10, 14, 26, 0.8);">
               <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color: var(--error-red); margin-bottom: 2rem;"></i>
               <h2 style="margin-bottom: 1rem; color: var(--text-primary);">Browser Unavailable</h2>
-              <p style="color: var(--text-secondary); text-align: center; max-width: 400px;">The browser doesn't work on file:// protocol. Please run NautilusOS from a web server to use this feature.</p>
+              <p style="color: var(--text-secondary); text-align: center; max-width: 400px;">The browser doesn't work on file:// protocol. Please run funschoolworkOS from a web server to use this feature.</p>
             </div>
           `;
         }
@@ -2511,7 +2511,7 @@ function openApp(appName, editorContent = "", filename = "") {
 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='75' font-size=85' fill='white'%3E🌐︎%3C/text%3E%3C/svg%3E"
 alt="favicon">
 
-                            <span class="cloaking-preview-title" id="previewTitle">NautilusOS</span>
+                            <span class="cloaking-preview-title" id="previewTitle">funschoolworkOS</span>
                         </div>
                     </div>
                     
@@ -2855,7 +2855,7 @@ alt="favicon">
                                 <div class="settings-item-desc">Open What's New window when logging in</div>
                             </div>
                             <div class="toggle-switch ${localStorage.getItem(
-          "nautilusOS_showWhatsNew"
+          "funschoolworkOS_showWhatsNew"
         ) !== "false"
           ? "active"
           : ""
@@ -2927,7 +2927,7 @@ alt="favicon">
                                 <div class="settings-empty">
                                     <i class="fas fa-paint-brush"></i>
                                     <h3>No Themes Installed</h3>
-                                    <p>Visit the App Store to browse and install custom themes for NautilusOS.</p>
+                                    <p>Visit the App Store to browse and install custom themes for funschoolworkOS.</p>
                                     <button class="settings-action-btn" onclick="hideContextMenu(); openApp('appstore'); setTimeout(() => { const themesBtn = document.querySelector('.appstore-section:nth-child(2)'); if(themesBtn) switchAppStoreSection('themes', themesBtn); }, 100);">
                                         <i class="fas fa-store"></i> Open App Store
                                     </button>
@@ -3252,7 +3252,7 @@ alt="favicon">
                         <i class="fas fa-info-circle"></i>
                     </div>
                     <div class="help-topic-title">Welcome</div>
-                    <div class="help-topic-preview">Introduction to NautilusOS</div>
+                    <div class="help-topic-preview">Introduction to funschoolworkOS</div>
                 </div>
                 
                 <div class="help-topic-card" onclick="expandHelpTopic('cloaking')">
@@ -3335,13 +3335,13 @@ alt="favicon">
       height: 600,
     },
     whatsnew: {
-      title: "What's New in NautilusOS",
+      title: "What's New in funschoolworkOS",
       icon: "fas fa-star",
       content: `
               <div class="whats-new-content">
                   <center>
                   <div class="whats-new-header">
-                      <h1 style="text-align: center !important">Welcome to NautilusOS v1.0! <br>What's new?</h1>
+                      <h1 style="text-align: center !important">Welcome to funschoolworkOS v1.0! <br>What's new?</h1>
                       <p>Discover the latest features and improvements</p>
                   </div>
                   </center>
@@ -3385,7 +3385,7 @@ alt="favicon">
                           </div>
                           <div class="carousel-content">
                               <h2>Multiple Boot Options</h2>
-                              <p>Choose between graphical mode or command-line interface on startup. Your preference is remembered, giving you full control over your NautilusOS experience.</p>
+                              <p>Choose between graphical mode or command-line interface on startup. Your preference is remembered, giving you full control over your funschoolworkOS experience.</p>
                           </div>
                       </div>
 
@@ -3465,7 +3465,7 @@ alt="favicon">
                           </div>
                           <div class="carousel-content">
                               <h2>Built-in App Store</h2>
-                              <p>Discover and install new applications from the NautilusOS App Store. Browse featured themes, apps, and tools to extend your desktop experience with just a click!</p>
+                              <p>Discover and install new applications from the funschoolworkOS App Store. Browse featured themes, apps, and tools to extend your desktop experience with just a click!</p>
                           </div>
                       </div>
 
@@ -3479,7 +3479,7 @@ alt="favicon">
                           </div>
                           <div class="carousel-content">
                               <h2>Fully Customizable</h2>
-                              <p>Personalize your experience with extensive settings. Make NautilusOS truly yours by installing different themes, changing cloaking settings, arranging desktop icons, configuring boot preferences, and more.</p>
+                              <p>Personalize your experience with extensive settings. Make funschoolworkOS truly yours by installing different themes, changing cloaking settings, arranging desktop icons, configuring boot preferences, and more.</p>
                           </div>
                       </div>
 
@@ -3532,7 +3532,7 @@ alt="favicon">
                           </div>
                           <div class="carousel-content">
                               <h2>Built-in Web Browser</h2>
-                              <p>Browse the web without leaving NautilusOS! Full-featured browser with multiple tabs, navigation controls, and URL bar. Visit your favorite websites right from your virtual desktop.</p>
+                              <p>Browse the web without leaving funschoolworkOS! Full-featured browser with multiple tabs, navigation controls, and URL bar. Visit your favorite websites right from your virtual desktop.</p>
                           </div>
                       </div>
 
@@ -3576,7 +3576,7 @@ alt="favicon">
     </div>
     <div class="carousel-content">
         <h2>Import & Export Profiles</h2>
-        <p>Backup your entire NautilusOS experience! Export your profile to save settings, files, apps, and themes. Import profiles to restore your setup on any device or share configurations with others.</p>
+        <p>Backup your entire funschoolworkOS experience! Export your profile to save settings, files, apps, and themes. Import profiles to restore your setup on any device or share configurations with others.</p>
     </div>
 </div>
 
@@ -3595,7 +3595,7 @@ alt="favicon">
           </div>
           <div class="carousel-content">
               <h2>Notification Center</h2>
-              <p>Never miss important system messages! View all your notifications in one place, track their history, and clear them when you're done. Stay informed about everything happening in NautilusOS.</p>
+              <p>Never miss important system messages! View all your notifications in one place, track their history, and clear them when you're done. Stay informed about everything happening in funschoolworkOS.</p>
           </div>
       </div>
 
@@ -3637,7 +3637,7 @@ alt="favicon">
     </div>
     <div class="carousel-content">
         <h2>Personalization & Wallpapers</h2>
-        <p>Make NautilusOS truly yours! Upload custom wallpapers for both desktop and login screen, set a profile picture to personalize your account, and choose whether to use the same background everywhere or different ones for each screen.</p>
+        <p>Make funschoolworkOS truly yours! Upload custom wallpapers for both desktop and login screen, set a profile picture to personalize your account, and choose whether to use the same background everywhere or different ones for each screen.</p>
     </div>
 </div>
 <div class="carousel-slide" data-slide="15">
@@ -3697,7 +3697,7 @@ alt="favicon">
                   <div class="whats-new-footer">
                       <div class="footer-card">
                           <h3><i class="fas fa-question-circle"></i> Need Help?</h3>
-                          <p>Check out our comprehensive help guide to learn more about all the features and keyboard shortcuts available in NautilusOS.</p>
+                          <p>Check out our comprehensive help guide to learn more about all the features and keyboard shortcuts available in funschoolworkOS.</p>
                           <a href="#" onclick="event.preventDefault(); hideContextMenu(); openApp('help')">
                               Open Help <i class="fas fa-arrow-right"></i>
                           </a>
@@ -3705,8 +3705,8 @@ alt="favicon">
 
                       <div class="footer-card">
                           <h3><i class="fas fa-code"></i> Open Source</h3>
-                          <p>NautilusOS is crafted with care by <strong>dinguschan</strong>. Built with vanilla HTML, CSS, and JavaScript - no frameworks needed!</p>
-                          <a href="https://github.com/dinguschan-owo/NautilusOS" onclick="event.stopPropagation()">
+                          <p>funschoolworkOS is crafted with care by <strong>dinguschan</strong>. Built with vanilla HTML, CSS, and JavaScript - no frameworks needed!</p>
+                          <a href="https://github.com/dinguschan-owo/funschoolworkOS" onclick="event.stopPropagation()">
                               View on GitHub <i class="fas fa-external-link-alt"></i>
                           </a>
                       </div>
@@ -3773,7 +3773,7 @@ alt="favicon">
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 3rem; background: rgba(10, 14, 26, 0.8);">
               <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color: var(--error-red); margin-bottom: 2rem;"></i>
               <h2 style="margin-bottom: 1rem; color: var(--text-primary);">Ultraviolet Unavailable</h2>
-              <p style="color: var(--text-secondary); text-align: center; max-width: 400px;">Ultraviolet doesn't work on file:// protocol. Please run NautilusOS from a web server to use this feature.</p>
+              <p style="color: var(--text-secondary); text-align: center; max-width: 400px;">Ultraviolet doesn't work on file:// protocol. Please run funschoolworkOS from a web server to use this feature.</p>
             </div>
           `;
         }
@@ -3796,7 +3796,7 @@ alt="favicon">
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 3rem; background: rgba(10, 14, 26, 0.8);">
               <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color: var(--error-red); margin-bottom: 2rem;"></i>
               <h2 style="margin-bottom: 1rem; color: var(--text-primary);">VS Code Unavailable</h2>
-              <p style="color: var(--text-secondary); text-align: center; max-width: 400px;">Visual Studio Code doesn't work on file:// protocol. Please run NautilusOS from a web server to use this feature.</p>
+              <p style="color: var(--text-secondary); text-align: center; max-width: 400px;">Visual Studio Code doesn't work on file:// protocol. Please run funschoolworkOS from a web server to use this feature.</p>
             </div>
           `;
         }
@@ -3847,7 +3847,7 @@ alt="favicon">
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 3rem; background: rgba(10, 14, 26, 0.8);">
               <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color: var(--error-red); margin-bottom: 2rem;"></i>
               <h2 style="margin-bottom: 1rem; color: var(--text-primary);">Helios Unavailable</h2>
-              <p style="color: var(--text-secondary); text-align: center; max-width: 400px;">Helios Browser doesn't work on file:// protocol. Please run NautilusOS from a web server to use this feature.</p>
+              <p style="color: var(--text-secondary); text-align: center; max-width: 400px;">Helios Browser doesn't work on file:// protocol. Please run funschoolworkOS from a web server to use this feature.</p>
             </div>
           `;
         }
@@ -3885,7 +3885,7 @@ alt="favicon">
     <div class="appstore-main" id="appstoreMain">
         <div class="appstore-header">
             <h2>Themes</h2>
-            <p>Customize your NautilusOS experience</p>
+            <p>Customize your funschoolworkOS experience</p>
         </div>
         <div class="appstore-grid">
             <div class="appstore-item">
@@ -3893,7 +3893,7 @@ alt="favicon">
                     <i class="fas fa-moon"></i>
                 </div>
                 <div class="appstore-item-name">Dark Theme by dinguschan</div>
-                <div class="appstore-item-desc">The default NautilusOS theme. Sleek dark interface with teal accents,
+                <div class="appstore-item-desc">The default funschoolworkOS theme. Sleek dark interface with teal accents,
                     perfect for extended use and reducing eye strain.</div>
                 <button class="appstore-item-btn installed" style="opacity: 0.6; cursor: not-allowed;" disabled>
                     Installed (Default)
@@ -4165,7 +4165,7 @@ alt="favicon">
     if (appName === "browser") {
       setTimeout(() => {
         showToast(
-          "Nautilus Browser not good enough? Check out Helios Browser and UV on the App Store!",
+          "funschoolwork Browser not good enough? Check out Helios Browser and UV on the App Store!",
           "fa-info-circle"
         );
       }, 500);
@@ -4213,7 +4213,7 @@ function handleTerminalInput(e) {
 
     const cmdLine = document.createElement("div");
     cmdLine.className = "terminal-line";
-    cmdLine.innerHTML = `<span class="terminal-prompt">user@nautilusos:~$ </span>${command}`;
+    cmdLine.innerHTML = `<span class="terminal-prompt">user@funschoolworkos:~$ </span>${command}`;
     terminal.insertBefore(cmdLine, terminal.lastElementChild);
 
     const output = document.createElement("div");
@@ -4266,13 +4266,13 @@ function handleTerminalInput(e) {
     } else if (command === "whoami") {
       output.textContent = currentUsername;
     } else if (command === "reset-boot") {
-      localStorage.removeItem("nautilusOS_bootChoice");
+      localStorage.removeItem("funschoolworkOS_bootChoice");
       output.innerHTML =
         '<span style="color: #4ade80;">✓ Bootloader preferences reset successfully</span><br>' +
         "The bootloader menu will appear on next page reload.";
     } else if (command === "clear") {
       terminal.innerHTML = `
-                      <div class="terminal-line" style="color: var(--accent);">NautilusOS Terminal v1.0</div>
+                      <div class="terminal-line" style="color: var(--accent);">funschoolworkOS Terminal v1.0</div>
                       <div class="terminal-line" style="color: #888; margin-bottom: 1rem;">Type 'help' for available commands</div>
                   `;
     } else if (command === "date") {
@@ -4290,7 +4290,7 @@ function handleTerminalInput(e) {
     const newInputLine = document.createElement("div");
     newInputLine.className = "terminal-line";
     newInputLine.innerHTML =
-      '<span class="terminal-prompt">user@nautilusos:~$ </span><input type="text" class="terminal-input" id="terminalInput" onkeypress="handleTerminalInput(event)">';
+      '<span class="terminal-prompt">user@funschoolworkos:~$ </span><input type="text" class="terminal-input" id="terminalInput" onkeypress="handleTerminalInput(event)">';
 
     terminal.removeChild(terminal.lastElementChild);
     terminal.appendChild(newInputLine);
@@ -4304,9 +4304,9 @@ function handleTerminalInput(e) {
 
 function toggleSetting(setting) {
   if (setting === "showWhatsNew") {
-    const currentValue = localStorage.getItem("nautilusOS_showWhatsNew");
+    const currentValue = localStorage.getItem("funschoolworkOS_showWhatsNew");
     const newValue = currentValue === "false" ? "true" : "false";
-    localStorage.setItem("nautilusOS_showWhatsNew", newValue);
+    localStorage.setItem("funschoolworkOS_showWhatsNew", newValue);
 
     const toggles = document.querySelectorAll(".toggle-switch");
     toggles.forEach((toggle) => {
@@ -4415,9 +4415,9 @@ function applyUserBackgrounds() {
   const desktop = document.getElementById("desktop");
   const login = document.getElementById("login");
   const wallpaperLayer = document.querySelector(".wallpaper");
-  const wallpaperData = localStorage.getItem("nautilusOS_wallpaper");
-  const loginBackgroundData = localStorage.getItem("nautilusOS_loginBackground");
-  const sameSetting = localStorage.getItem("nautilusOS_useSameBackground");
+  const wallpaperData = localStorage.getItem("funschoolworkOS_wallpaper");
+  const loginBackgroundData = localStorage.getItem("funschoolworkOS_loginBackground");
+  const sameSetting = localStorage.getItem("funschoolworkOS_useSameBackground");
   const useSame = sameSetting === null || sameSetting === "true";
   const loginData = useSame ? wallpaperData : loginBackgroundData;
 
@@ -4445,16 +4445,16 @@ function applyUserBackgrounds() {
 }
 
 function initializeAppearanceSettings() {
-  const sameSetting = localStorage.getItem("nautilusOS_useSameBackground");
+  const sameSetting = localStorage.getItem("funschoolworkOS_useSameBackground");
   const useSame = sameSetting === null || sameSetting === "true";
   const toggle = document.getElementById("loginWallpaperToggle");
   const controls = document.getElementById("loginWallpaperControls");
   const desktopButton = document.getElementById("desktopWallpaperButton");
   const loginButton = document.getElementById("loginWallpaperButton");
   const profileButton = document.getElementById("profilePictureButton");
-  const hasWallpaper = !!localStorage.getItem("nautilusOS_wallpaper");
-  const hasLoginWallpaper = !!localStorage.getItem("nautilusOS_loginBackground");
-  const hasProfile = !!localStorage.getItem("nautilusOS_profilePicture");
+  const hasWallpaper = !!localStorage.getItem("funschoolworkOS_wallpaper");
+  const hasLoginWallpaper = !!localStorage.getItem("funschoolworkOS_loginBackground");
+  const hasProfile = !!localStorage.getItem("funschoolworkOS_profilePicture");
 
   if (toggle) {
     if (useSame) {
@@ -4487,7 +4487,7 @@ function initializeAppearanceSettings() {
 function handleWallpaperUpload(event) {
   const file = event.target.files[0];
   if (!readImageFile(file, (data) => {
-    localStorage.setItem("nautilusOS_wallpaper", data);
+    localStorage.setItem("funschoolworkOS_wallpaper", data);
     applyUserBackgrounds();
     initializeAppearanceSettings();
     showToast("Desktop wallpaper updated!", "fa-check-circle");
@@ -4498,11 +4498,11 @@ function handleWallpaperUpload(event) {
 }
 
 function clearWallpaper() {
-  if (!localStorage.getItem("nautilusOS_wallpaper")) {
+  if (!localStorage.getItem("funschoolworkOS_wallpaper")) {
     showToast("No desktop wallpaper is set.", "fa-info-circle");
     return;
   }
-  localStorage.removeItem("nautilusOS_wallpaper");
+  localStorage.removeItem("funschoolworkOS_wallpaper");
   applyUserBackgrounds();
   initializeAppearanceSettings();
   const input = document.getElementById("wallpaperInput");
@@ -4511,10 +4511,10 @@ function clearWallpaper() {
 }
 
 function toggleLoginWallpaperLink(element) {
-  const sameSetting = localStorage.getItem("nautilusOS_useSameBackground");
+  const sameSetting = localStorage.getItem("funschoolworkOS_useSameBackground");
   const useSame = sameSetting === null || sameSetting === "true";
   const newValue = !useSame;
-  localStorage.setItem("nautilusOS_useSameBackground", newValue ? "true" : "false");
+  localStorage.setItem("funschoolworkOS_useSameBackground", newValue ? "true" : "false");
   if (element) {
     if (newValue) {
       element.classList.add("active");
@@ -4533,7 +4533,7 @@ function toggleLoginWallpaperLink(element) {
 function handleLoginBackgroundUpload(event) {
   const file = event.target.files[0];
   if (!readImageFile(file, (data) => {
-    localStorage.setItem("nautilusOS_loginBackground", data);
+    localStorage.setItem("funschoolworkOS_loginBackground", data);
     applyUserBackgrounds();
     initializeAppearanceSettings();
     showToast("Login wallpaper updated!", "fa-check-circle");
@@ -4544,11 +4544,11 @@ function handleLoginBackgroundUpload(event) {
 }
 
 function clearLoginWallpaper() {
-  if (!localStorage.getItem("nautilusOS_loginBackground")) {
+  if (!localStorage.getItem("funschoolworkOS_loginBackground")) {
     showToast("No login wallpaper is set.", "fa-info-circle");
     return;
   }
-  localStorage.removeItem("nautilusOS_loginBackground");
+  localStorage.removeItem("funschoolworkOS_loginBackground");
   applyUserBackgrounds();
   initializeAppearanceSettings();
   const input = document.getElementById("loginWallpaperInput");
@@ -4559,7 +4559,7 @@ function clearLoginWallpaper() {
 function handleProfilePictureUpload(event) {
   const file = event.target.files[0];
   if (!readImageFile(file, (data) => {
-    localStorage.setItem("nautilusOS_profilePicture", data);
+    localStorage.setItem("funschoolworkOS_profilePicture", data);
     applyProfilePicture();
     initializeAppearanceSettings();
     showToast("Profile picture updated!", "fa-check-circle");
@@ -4570,11 +4570,11 @@ function handleProfilePictureUpload(event) {
 }
 
 function clearProfilePicture() {
-  if (!localStorage.getItem("nautilusOS_profilePicture")) {
+  if (!localStorage.getItem("funschoolworkOS_profilePicture")) {
     showToast("No profile picture is set.", "fa-info-circle");
     return;
   }
-  localStorage.removeItem("nautilusOS_profilePicture");
+  localStorage.removeItem("funschoolworkOS_profilePicture");
   applyProfilePicture();
   initializeAppearanceSettings();
   const input = document.getElementById("profilePictureInput");
@@ -4583,7 +4583,7 @@ function clearProfilePicture() {
 }
 
 function applyProfilePicture() {
-  const data = localStorage.getItem("nautilusOS_profilePicture");
+  const data = localStorage.getItem("funschoolworkOS_profilePicture");
   const avatars = document.querySelectorAll(".login-avatar, .start-avatar");
   avatars.forEach((avatar) => {
     if (data) {
@@ -4601,7 +4601,7 @@ function updateLoginGreeting() {
   const hour = now.getHours();
   const greetingEl = document.getElementById("loginGreeting");
   let greeting = "Welcome Back";
-  const username = localStorage.getItem("nautilusOS_username") || "User";
+  const username = localStorage.getItem("funschoolworkOS_username") || "User";
 
   if (hour >= 5 && hour < 12) {
     greeting = `Good Morning, ${username}`;
@@ -5276,7 +5276,7 @@ function switchAppStoreSection(section, element) {
     mainContent.innerHTML = `
               <div class="appstore-header">
                   <h2>Themes</h2>
-                  <p>Customize your NautilusOS experience</p>
+                  <p>Customize your funschoolworkOS experience</p>
               </div>
               <div class="appstore-grid">
                   <div class="appstore-item">
@@ -5284,7 +5284,7 @@ function switchAppStoreSection(section, element) {
                           <i class="fas fa-moon"></i>
                       </div>
                       <div class="appstore-item-name">Dark Theme by dinguschan</div>
-                      <div class="appstore-item-desc">The default NautilusOS theme. Sleek dark interface with teal accents, perfect for extended use and reducing eye strain.</div>
+                      <div class="appstore-item-desc">The default funschoolworkOS theme. Sleek dark interface with teal accents, perfect for extended use and reducing eye strain.</div>
                       <button class="appstore-item-btn installed" style="opacity: 0.6; cursor: not-allowed;" disabled>
                           Installed (Default)
                       </button>
@@ -5560,7 +5560,7 @@ ${startupInstalled ? "Uninstall" : "Install"}
       <i class="fas fa-globe"></i>
    </div>
    <div class="appstore-item-name">Visual Studio Code</div>
-   <div class="appstore-item-desc">The developer's choice for text editing, now on NautilusOS.</div>
+   <div class="appstore-item-desc">The developer's choice for text editing, now on funschoolworkOS.</div>
    <button class="appstore-item-btn ${vscInstalled ? "installed" : ""
       }" onclick="${vscInstalled ? "uninstallApp('vsc')" : "installApp('vsc')"
       }">
@@ -5572,7 +5572,7 @@ ${startupInstalled ? "Uninstall" : "Install"}
       <i class="fas fa-microchip"></i>
    </div>
    <div class="appstore-item-name">V86 Emulator by lanefiedler-731</div>
-   <div class="appstore-item-desc">Run x86 operating systems and software within NautilusOS. Experience virtualized computing with full system emulation.</div>
+   <div class="appstore-item-desc">Run x86 operating systems and software within funschoolworkOS. Experience virtualized computing with full system emulation.</div>
    <button class="appstore-item-btn ${v86Installed ? "installed" : ""
       }" onclick="${v86Installed ? "uninstallApp('v86-emulator')" : "installApp('v86-emulator')"
       }">
@@ -5588,7 +5588,7 @@ ${startupInstalled ? "Uninstall" : "Install"}
     mainContent.innerHTML = `
               <div class="appstore-header">
                   <h2>Games</h2>
-                  <p>Play and enjoy games on NautilusOS</p>
+                  <p>Play and enjoy games on funschoolworkOS</p>
               </div>
               <div class="appstore-grid">
                   <div class="appstore-item">
@@ -5650,7 +5650,7 @@ function installTheme(themeName) {
 
   installedThemes.push(themeName);
   localStorage.setItem(
-    "nautilusOS_installedThemes",
+    "funschoolworkOS_installedThemes",
     JSON.stringify(installedThemes)
   );
   showToast("Theme installed! Go to Settings to apply it.", "fa-check-circle");
@@ -5665,7 +5665,7 @@ function uninstallTheme(themeName) {
   if (index > -1) {
     installedThemes.splice(index, 1);
     localStorage.setItem(
-      "nautilusOS_installedThemes",
+      "funschoolworkOS_installedThemes",
       JSON.stringify(installedThemes)
     );
     showToast("Theme uninstalled", "fa-trash");
@@ -5691,7 +5691,7 @@ function applyTheme(themeName) {
   if (!theme) { console.warn("Theme not found:", themeName); return; }
   console.log(themeLink)
   themeLink.href = theme.url
-  localStorage.setItem("nautilusOS_currentTheme", themeName);
+  localStorage.setItem("funschoolworkOS_currentTheme", themeName);
   appliedThemeName = themeName;
 }
 
@@ -6776,25 +6776,25 @@ function setupComplete() {
     }
   });
 
-  localStorage.setItem("nautilusOS_username", username);
+  localStorage.setItem("funschoolworkOS_username", username);
   if (isPasswordless) {
-    localStorage.setItem("nautilusOS_password", "");
-    localStorage.setItem("nautilusOS_isPasswordless", "true");
+    localStorage.setItem("funschoolworkOS_password", "");
+    localStorage.setItem("funschoolworkOS_isPasswordless", "true");
   } else {
-    localStorage.setItem("nautilusOS_password", hashPassword(password));
-    localStorage.setItem("nautilusOS_isPasswordless", "false");
+    localStorage.setItem("funschoolworkOS_password", hashPassword(password));
+    localStorage.setItem("funschoolworkOS_isPasswordless", "false");
   }
-  localStorage.setItem("nautilusOS_setupComplete", "true");
+  localStorage.setItem("funschoolworkOS_setupComplete", "true");
   localStorage.setItem(
-    "nautilusOS_installedThemes",
+    "funschoolworkOS_installedThemes",
     JSON.stringify(installedThemes)
   );
   localStorage.setItem(
-    "nautilusOS_installedApps",
+    "funschoolworkOS_installedApps",
     JSON.stringify(installedApps)
   );
   localStorage.setItem(
-    "nautilusOS_startupApps",
+    "funschoolworkOS_startupApps",
     JSON.stringify(startupApps)
   );
   saveSettingsToLocalStorage();
@@ -6807,7 +6807,7 @@ function setupComplete() {
     }, 100);
   }
 
-  let welcomeMessage = "Setup complete! Welcome to NautilusOS";
+  let welcomeMessage = "Setup complete! Welcome to funschoolworkOS";
   let toastIcon = "fa-check-circle";
   if (username.toLowerCase() === "dinguschan") {
     welcomeMessage = "Welcome back, developer! Is it really you?!";
@@ -6833,7 +6833,7 @@ function setupComplete() {
 }
 async function forgotPassword() {
   const isPasswordless =
-    localStorage.getItem("nautilusOS_isPasswordless") === "true";
+    localStorage.getItem("funschoolworkOS_isPasswordless") === "true";
   const message = isPasswordless
     ? "This will reset your passwordless account and return you to setup. All data will be preserved. Continue?"
     : "This will reset your account and return you to setup. All data will be preserved. Continue?";
@@ -6841,10 +6841,10 @@ async function forgotPassword() {
   const confirmed = await confirm(message);
   if (!confirmed) return;
 
-  localStorage.removeItem("nautilusOS_username");
-  localStorage.removeItem("nautilusOS_password");
-  localStorage.removeItem("nautilusOS_isPasswordless");
-  localStorage.removeItem("nautilusOS_setupComplete");
+  localStorage.removeItem("funschoolworkOS_username");
+  localStorage.removeItem("funschoolworkOS_password");
+  localStorage.removeItem("funschoolworkOS_isPasswordless");
+  localStorage.removeItem("funschoolworkOS_setupComplete");
 
   const usernameInput = document.getElementById("username");
   if (usernameInput) usernameInput.value = "";
@@ -6911,11 +6911,11 @@ function setupStep3Back() {
 }
 
 function saveSettingsToLocalStorage() {
-  localStorage.setItem("nautilusOS_settings", JSON.stringify(settings));
+  localStorage.setItem("funschoolworkOS_settings", JSON.stringify(settings));
 }
 
 function loadSettingsFromLocalStorage() {
-  const saved = localStorage.getItem("nautilusOS_settings");
+  const saved = localStorage.getItem("funschoolworkOS_settings");
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
@@ -6927,13 +6927,13 @@ function loadSettingsFromLocalStorage() {
 }
 
 function loadAndApplyTheme() {
-  const saved = localStorage.getItem("nautilusOS_currentTheme");
+  const saved = localStorage.getItem("funschoolworkOS_currentTheme");
   const themeToApply = (saved && themeDefinitions[saved]) ? saved : "dark";
   applyTheme(themeToApply);
 }
 
 function loadInstalledThemes() {
-  const saved = localStorage.getItem("nautilusOS_installedThemes");
+  const saved = localStorage.getItem("funschoolworkOS_installedThemes");
   if (saved) {
     try {
       installedThemes = JSON.parse(saved);
@@ -7003,7 +7003,7 @@ async function signOutToLogin() {
     if (password) password.value = "";
 
     const username = document.getElementById("username");
-    const savedUsername = localStorage.getItem("nautilusOS_username");
+    const savedUsername = localStorage.getItem("funschoolworkOS_username");
     if (username && savedUsername) {
       username.value = savedUsername;
     }
@@ -7018,7 +7018,7 @@ async function signOutToLogin() {
       login.style.opacity = "1";
 
       const isPasswordless =
-        localStorage.getItem("nautilusOS_isPasswordless") === "true";
+        localStorage.getItem("funschoolworkOS_isPasswordless") === "true";
       if (isPasswordless) {
         const usernameInput = document.getElementById("username");
         if (usernameInput) {
@@ -7044,12 +7044,12 @@ async function resetAllData() {
     return;
   }
 
-  const achievements = localStorage.getItem("nautilusOS_achievements");
+  const achievements = localStorage.getItem("funschoolworkOS_achievements");
 
   localStorage.clear();
 
   if (achievements) {
-    localStorage.setItem("nautilusOS_achievements", achievements);
+    localStorage.setItem("funschoolworkOS_achievements", achievements);
   }
 
   showToast("All data has been erased. Reloading...", "fa-trash-alt");
@@ -7074,7 +7074,7 @@ async function changeuser() {
   };
 
   showToast("Username changed successfully. Reloading...", "fa-check-circle");
-  localStorage.setItem("nautilusOS_username", newUsername);
+  localStorage.setItem("funschoolworkOS_username", newUsername);
 
   setTimeout(() => {
     location.reload();
@@ -7179,7 +7179,7 @@ let startupApps = [];
 let installedGames = [];
 
 function hashPassword(password) {
-  const salt = "NautilusOS_Salt_2024"; // Simple salt for demo
+  const salt = "funschoolworkOS_Salt_2024"; // Simple salt for demo
   let hash = 0;
   const combined = password + salt;
   for (let i = 0; i < combined.length; i++) {
@@ -7191,7 +7191,7 @@ function hashPassword(password) {
 }
 
 function loadInstalledApps() {
-  const saved = localStorage.getItem("nautilusOS_installedApps");
+  const saved = localStorage.getItem("funschoolworkOS_installedApps");
   if (saved) {
     try {
       installedApps = JSON.parse(saved);
@@ -7200,7 +7200,7 @@ function loadInstalledApps() {
     }
   }
 
-  const savedStartup = localStorage.getItem("nautilusOS_startupApps");
+  const savedStartup = localStorage.getItem("funschoolworkOS_startupApps");
   if (savedStartup) {
     try {
       startupApps = JSON.parse(savedStartup);
@@ -7218,7 +7218,7 @@ function installApp(appName) {
 
   installedApps.push(appName);
   localStorage.setItem(
-    "nautilusOS_installedApps",
+    "funschoolworkOS_installedApps",
     JSON.stringify(installedApps)
   );
 
@@ -7248,7 +7248,7 @@ function uninstallApp(appName) {
   if (index > -1) {
     installedApps.splice(index, 1);
     localStorage.setItem(
-      "nautilusOS_installedApps",
+      "funschoolworkOS_installedApps",
       JSON.stringify(installedApps)
     );
 
@@ -7285,7 +7285,7 @@ function installGame(gameName) {
 
   installedGames.push(gameName);
   localStorage.setItem(
-    "nautilusOS_installedGames",
+    "funschoolworkOS_installedGames",
     JSON.stringify(installedGames)
   );
 
@@ -7304,7 +7304,7 @@ function uninstallGame(gameName) {
   if (index > -1) {
     installedGames.splice(index, 1);
     localStorage.setItem(
-      "nautilusOS_installedGames",
+      "funschoolworkOS_installedGames",
       JSON.stringify(installedGames)
     );
 
@@ -7321,7 +7321,7 @@ function uninstallGame(gameName) {
 }
 
 function loadInstalledGames() {
-  const saved = localStorage.getItem("nautilusOS_installedGames");
+  const saved = localStorage.getItem("funschoolworkOS_installedGames");
   if (saved) {
     try {
       installedGames = JSON.parse(saved);
@@ -7590,7 +7590,7 @@ function openStartupApps() {
   const preinstalledApps = [
     { id: "files", name: "Files", icon: "fa-folder" },
     { id: "terminal", name: "Terminal", icon: "fa-terminal" },
-    { id: "browser", name: "Nautilus Browser", icon: "fa-globe" },
+    { id: "browser", name: "funschoolwork Browser", icon: "fa-globe" },
     { id: "settings", name: "Settings", icon: "fa-cog" },
     { id: "editor", name: "Text Editor", icon: "fa-edit" },
     { id: "music", name: "Music", icon: "fa-music" },
@@ -7657,7 +7657,7 @@ function openStartupApps() {
     .join("");
 
   const whatsNewEnabled =
-    localStorage.getItem("nautilusOS_showWhatsNew") !== "false";
+    localStorage.getItem("funschoolworkOS_showWhatsNew") !== "false";
   const whatsNewHtml = `
               <div class="startup-item disabled">
                   <div class="startup-item-icon">
@@ -7704,7 +7704,7 @@ function toggleStartupApp(appId) {
     startupApps.push(appId);
   }
 
-  localStorage.setItem("nautilusOS_startupApps", JSON.stringify(startupApps));
+  localStorage.setItem("funschoolworkOS_startupApps", JSON.stringify(startupApps));
 
   if (windows["startup-apps"]) {
     const content = windows["startup-apps"].querySelector(".window-content");
@@ -7712,7 +7712,7 @@ function toggleStartupApp(appId) {
       const preinstalledApps = [
         { id: "files", name: "Files", icon: "fa-folder" },
         { id: "terminal", name: "Terminal", icon: "fa-terminal" },
-        { id: "browser", name: "Nautilus Browser", icon: "fa-globe" },
+        { id: "browser", name: "funschoolwork Browser", icon: "fa-globe" },
         { id: "settings", name: "Settings", icon: "fa-cog" },
         { id: "editor", name: "Text Editor", icon: "fa-edit" },
         { id: "music", name: "Music", icon: "fa-music" },
@@ -7757,7 +7757,7 @@ function toggleStartupApp(appId) {
         .join("");
 
       const whatsNewEnabled =
-        localStorage.getItem("nautilusOS_showWhatsNew") !== "false";
+        localStorage.getItem("funschoolworkOS_showWhatsNew") !== "false";
       const whatsNewHtml = `
                       <div class="startup-item disabled">
                           <div class="startup-item-icon">
@@ -8095,21 +8095,21 @@ function updateStartMenu() {
 function exportProfile() {
   const profile = {
     version: "1.0",
-    username: localStorage.getItem("nautilusOS_username"),
-    password: localStorage.getItem("nautilusOS_password"),
-    isPasswordless: localStorage.getItem("nautilusOS_isPasswordless") === "true",
+    username: localStorage.getItem("funschoolworkOS_username"),
+    password: localStorage.getItem("funschoolworkOS_password"),
+    isPasswordless: localStorage.getItem("funschoolworkOS_isPasswordless") === "true",
     settings: settings,
     installedThemes: installedThemes,
     installedApps: installedApps,
     startupApps: startupApps,
     fileSystem: fileSystem,
-    showWhatsNew: localStorage.getItem("nautilusOS_showWhatsNew"),
+    showWhatsNew: localStorage.getItem("funschoolworkOS_showWhatsNew"),
     exportDate: new Date().toISOString(),
   };
-  const wallpaper = localStorage.getItem("nautilusOS_wallpaper");
-  const loginWallpaper = localStorage.getItem("nautilusOS_loginBackground");
-  const useSame = localStorage.getItem("nautilusOS_useSameBackground");
-  const profilePicture = localStorage.getItem("nautilusOS_profilePicture");
+  const wallpaper = localStorage.getItem("funschoolworkOS_wallpaper");
+  const loginWallpaper = localStorage.getItem("funschoolworkOS_loginBackground");
+  const useSame = localStorage.getItem("funschoolworkOS_useSameBackground");
+  const profilePicture = localStorage.getItem("funschoolworkOS_profilePicture");
   profile.wallpaper = wallpaper || null;
   profile.loginWallpaper = loginWallpaper || null;
   profile.useSameBackground = useSame === null ? "true" : useSame;
@@ -8121,7 +8121,7 @@ function exportProfile() {
 
   const username = currentUsername || "user";
   const date = new Date().toISOString().split("T")[0];
-  const filename = `NautilusOS_${username}_${date}.nautilusprofile`;
+  const filename = `funschoolworkOS_${username}_${date}.funschoolworkprofile`;
 
   const a = document.createElement("a");
   a.href = url;
@@ -8135,9 +8135,9 @@ function importProfile(event) {
   const file = event.target.files[0];
   if (!file) return;
 
-  if (!file.name.endsWith(".nautilusprofile")) {
+  if (!file.name.endsWith(".funschoolworkprofile")) {
     showToast(
-      "Invalid file format. Please select a .nautilusprofile file.",
+      "Invalid file format. Please select a .funschoolworkprofile file.",
       "fa-exclamation-circle"
     );
     return;
@@ -8169,15 +8169,15 @@ function importProfile(event) {
         return;
       }
 
-      localStorage.setItem("nautilusOS_username", profile.username);
-      localStorage.setItem("nautilusOS_password", profile.password || "");
+      localStorage.setItem("funschoolworkOS_username", profile.username);
+      localStorage.setItem("funschoolworkOS_password", profile.password || "");
 
       const isPasswordless = profile.isPasswordless !== undefined
         ? String(profile.isPasswordless)
         : (profile.password === "" ? "true" : "false");
-      localStorage.setItem("nautilusOS_isPasswordless", isPasswordless);
+      localStorage.setItem("funschoolworkOS_isPasswordless", isPasswordless);
 
-      localStorage.setItem("nautilusOS_setupComplete", "true");
+      localStorage.setItem("funschoolworkOS_setupComplete", "true");
 
       settings = profile.settings || settings;
       installedThemes = profile.installedThemes || [];
@@ -8185,54 +8185,54 @@ function importProfile(event) {
       startupApps = profile.startupApps || [];
 
       localStorage.setItem(
-        "nautilusOS_settings",
+        "funschoolworkOS_settings",
         JSON.stringify(settings)
       );
       localStorage.setItem(
-        "nautilusOS_installedThemes",
+        "funschoolworkOS_installedThemes",
         JSON.stringify(installedThemes)
       );
       localStorage.setItem(
-        "nautilusOS_installedApps",
+        "funschoolworkOS_installedApps",
         JSON.stringify(installedApps)
       );
       localStorage.setItem(
-        "nautilusOS_startupApps",
+        "funschoolworkOS_startupApps",
         JSON.stringify(startupApps)
       );
 
       if (profile.useSameBackground !== null && profile.useSameBackground !== undefined) {
         localStorage.setItem(
-          "nautilusOS_useSameBackground",
+          "funschoolworkOS_useSameBackground",
           String(profile.useSameBackground)
         );
       } else {
-        localStorage.removeItem("nautilusOS_useSameBackground");
+        localStorage.removeItem("funschoolworkOS_useSameBackground");
       }
 
       if (profile.wallpaper) {
-        localStorage.setItem("nautilusOS_wallpaper", profile.wallpaper);
+        localStorage.setItem("funschoolworkOS_wallpaper", profile.wallpaper);
       } else {
-        localStorage.removeItem("nautilusOS_wallpaper");
+        localStorage.removeItem("funschoolworkOS_wallpaper");
       }
 
       if (profile.loginWallpaper) {
         localStorage.setItem(
-          "nautilusOS_loginBackground",
+          "funschoolworkOS_loginBackground",
           profile.loginWallpaper
         );
       } else {
-        localStorage.removeItem("nautilusOS_loginBackground");
+        localStorage.removeItem("funschoolworkOS_loginBackground");
       }
 
       if (profile.profilePicture) {
-        localStorage.setItem("nautilusOS_profilePicture", profile.profilePicture);
+        localStorage.setItem("funschoolworkOS_profilePicture", profile.profilePicture);
       } else {
-        localStorage.removeItem("nautilusOS_profilePicture");
+        localStorage.removeItem("funschoolworkOS_profilePicture");
       }
 
       if (profile.showWhatsNew !== null && profile.showWhatsNew !== undefined) {
-        localStorage.setItem("nautilusOS_showWhatsNew", profile.showWhatsNew);
+        localStorage.setItem("funschoolworkOS_showWhatsNew", profile.showWhatsNew);
       }
 
       if (profile.fileSystem) {
@@ -8305,7 +8305,7 @@ let achievementsData = {
     "first-login": {
       id: "first-login",
       name: "Welcome Aboard!",
-      description: "Successfully log in to NautilusOS for the first time",
+      description: "Successfully log in to funschoolworkOS for the first time",
       icon: "fa-fish",
       unlocked: false,
       unlockedDate: null,
@@ -8313,7 +8313,7 @@ let achievementsData = {
     "uptime-1h": {
       id: "uptime-1h",
       name: "Time Traveler",
-      description: "Keep NautilusOS running for 1 hour of total uptime",
+      description: "Keep funschoolworkOS running for 1 hour of total uptime",
       icon: "fa-clock",
       unlocked: false,
       unlockedDate: null,
@@ -8438,7 +8438,7 @@ let achievementsData = {
       id: "night-owl",
       name: "Night Owl",
       lockedName: "???",
-      description: "You used NautilusOS at an ungodly hour (12-3 AM)",
+      description: "You used funschoolworkOS at an ungodly hour (12-3 AM)",
       icon: "fa-moon",
       unlocked: false,
       unlockedDate: null,
@@ -8468,7 +8468,7 @@ let achievementsData = {
 };
 
 function loadAchievements() {
-  const saved = localStorage.getItem("nautilusOS_achievements");
+  const saved = localStorage.getItem("funschoolworkOS_achievements");
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
@@ -8497,7 +8497,7 @@ function saveAchievements() {
     settingsChanged: Array.from(achievementsData.settingsChanged),
     totalUptime: achievementsData.totalUptime,
   };
-  localStorage.setItem("nautilusOS_achievements", JSON.stringify(toSave));
+  localStorage.setItem("funschoolworkOS_achievements", JSON.stringify(toSave));
 }
 
 function unlockAchievement(achievementId) {
@@ -8885,7 +8885,7 @@ function checkNightOwl() {
 const originalFavicon = document.querySelector('link[rel="icon"]')?.href || "";
 
 function loadCloakingConfig() {
-  const saved = localStorage.getItem("nautilusOS_cloaking");
+  const saved = localStorage.getItem("funschoolworkOS_cloaking");
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
@@ -8907,7 +8907,7 @@ function loadCloakingConfig() {
 }
 
 function saveCloakingConfig() {
-  localStorage.setItem("nautilusOS_cloaking", JSON.stringify(cloakingConfig));
+  localStorage.setItem("funschoolworkOS_cloaking", JSON.stringify(cloakingConfig));
 }
 
 function applyCloaking() {
@@ -9242,7 +9242,7 @@ document.addEventListener("contextmenu", () => {
 });
 function updateLoginScreen() {
   const isPasswordless =
-    localStorage.getItem("nautilusOS_isPasswordless") === "true";
+    localStorage.getItem("funschoolworkOS_isPasswordless") === "true";
   const passwordWrapper = document.getElementById("passwordWrapper");
   const loginSubtitle = document.getElementById("loginSubtitle");
   const loginContainer = document.querySelector(".login-container");
@@ -9282,12 +9282,12 @@ function expandHelpTopic(topicId) {
 
   const topics = {
     welcome: {
-      title: "Welcome to NautilusOS",
+      title: "Welcome to funschoolworkOS",
       icon: "fa-info-circle",
       content: `
-                <h2><i class="fas fa-info-circle"></i> Welcome to NautilusOS</h2>
-                <p>NautilusOS is a fully-featured web-based operating system with a complete desktop environment, virtual file system, and productivity applications.</p>
-                <p>This help system will guide you through all the features and capabilities of NautilusOS. Select any topic from the main menu to learn more.</p>
+                <h2><i class="fas fa-info-circle"></i> Welcome to funschoolworkOS</h2>
+                <p>funschoolworkOS is a fully-featured web-based operating system with a complete desktop environment, virtual file system, and productivity applications.</p>
+                <p>This help system will guide you through all the features and capabilities of funschoolworkOS. Select any topic from the main menu to learn more.</p>
             `,
     },
     cloaking: {
@@ -9310,10 +9310,10 @@ function expandHelpTopic(topicId) {
       icon: "fa-power-off",
       content: `
                 <h2><i class="fas fa-power-off"></i> Boot Options</h2>
-                <p>NautilusOS offers two boot modes:</p>
+                <p>funschoolworkOS offers two boot modes:</p>
                 <ul>
-                    <li><strong>Nautilus OS (Graphical)</strong> - Full desktop environment with windows, icons, and applications</li>
-                    <li><strong>Nautilus OS (Command Line)</strong> - Terminal-only interface for command-line operations</li>
+                    <li><strong>funschoolwork OS (Graphical)</strong> - Full desktop environment with windows, icons, and applications</li>
+                    <li><strong>funschoolwork OS (Command Line)</strong> - Terminal-only interface for command-line operations</li>
                 </ul>
                 <p>Your boot choice is remembered automatically. To change it, open Settings → System → Reset Boot Preference.</p>
             `,
@@ -9326,7 +9326,7 @@ function expandHelpTopic(topicId) {
                 <ul>
                     <li><strong>Files</strong> - Browse and manage your virtual file system with tree navigation</li>
                     <li><strong>Terminal</strong> - Access command-line interface with Unix commands</li>
-                    <li><strong>Nautilus Browser</strong> - Browse the web with multiple tabs and navigation</li>
+                    <li><strong>funschoolwork Browser</strong> - Browse the web with multiple tabs and navigation</li>
                     <li><strong>Text Editor</strong> - Create and edit text files with save options</li>
                     <li><strong>Music</strong> - Play audio files with playback controls</li>
                     <li><strong>Photos</strong> - View screenshots and images</li>
@@ -9378,7 +9378,7 @@ function expandHelpTopic(topicId) {
                     <li><strong>Screenshot</strong> - Capture your desktop instantly</li>
                     <li><strong>Close All</strong> - Close all open windows at once</li>
                     <li><strong>Sign Out</strong> - Return to login screen</li>
-                    <li><strong>Shut Down</strong> - Exit NautilusOS completely</li>
+                    <li><strong>Shut Down</strong> - Exit funschoolworkOS completely</li>
                 </ul>
                 <h3>Notification Center</h3>
                 <p>Click the <strong>bell icon</strong> to view your notification history. All system messages are stored here so you can review them later.</p>
@@ -9524,7 +9524,7 @@ function updateCloakPreview() {
 
   if (!titleInput || !previewTitle) return;
 
-  const title = titleInput.value.trim() || "NautilusOS";
+  const title = titleInput.value.trim() || "funschoolworkOS";
   previewTitle.textContent = title;
 
   if (faviconInput && previewFavicon) {
@@ -9856,7 +9856,7 @@ function changeUsername() {
   }
 
   currentUsername = newUsername;
-  localStorage.setItem("nautilusOS_username", newUsername);
+  localStorage.setItem("funschoolworkOS_username", newUsername);
   document.getElementById("displayUsername").textContent = newUsername;
 
   showToast(`Username changed to "${newUsername}"`, "fa-check-circle");
@@ -11448,7 +11448,7 @@ function reinstallV86() {
   const index = installedApps.indexOf('v86-emulator');
   if (index > -1) {
     installedApps.splice(index, 1);
-    localStorage.setItem('nautilusOS_installedApps', JSON.stringify(installedApps));
+    localStorage.setItem('funschoolworkOS_installedApps', JSON.stringify(installedApps));
   }
 
   // Trigger reinstallation
