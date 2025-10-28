@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NautilusOS</title>
+    <title>funschoolworkOS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <link rel="stylesheet" href="v86/v86-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,14 +33,14 @@
 <body>
     <div id="bootloader">
         <div class="boot-logo"><i class="fas fa-fish"></i></div>
-        <h1 class="boot-title"><b>NAUTILUS OS</b></h1>
+        <h1 class="boot-title"><b>funschoolwork OS</b></h1>
         <div class="boot-version">Version 1.0</div>
         <div class="boot-options" id="bootOptions">
             <div class="boot-option selected" data-index="0">
-                <i class="fas fa-play"></i> <span>Nautilus OS</span>
+                <i class="fas fa-play"></i> <span>funschoolwork OS</span>
             </div>
             <div class="boot-option" data-index="1">
-                <i class="fas fa-code"></i> <span>Nautilus OS (Command Line)</span>
+                <i class="fas fa-code"></i> <span>funschoolwork OS (Command Line)</span>
             </div>
         </div>
         <div class="boot-hint">
@@ -74,7 +74,7 @@
                     <div class="info-card-content">
                         <div class="info-stat">
                             <span class="info-stat-label">OS</span>
-                            <span class="info-stat-value">NautilusOS</span>
+                            <span class="info-stat-value">funschoolworkOS</span>
                         </div>
                         <div class="info-stat">
                             <span class="info-stat-label">Version</span>
@@ -146,7 +146,7 @@
                     <i class="fas fa-fish" style="font-size: 3rem; color: var(--bg-primary);"></i>
                 </div>
                 <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--text-primary); font-family: fontb;">
-                    Welcome to NautilusOS
+                    Welcome to funschoolworkOS
                 </h2>
                 <p style="color: var(--text-secondary); font-size: 1rem;">
                     Let's set up your account
@@ -195,7 +195,7 @@
                     onmouseover="this.style.background='rgba(125, 211, 192, 0.25)'; this.style.borderColor='rgba(125, 211, 192, 0.5)'"
                     onmouseout="this.style.background='rgba(125, 211, 192, 0.15)'; this.style.borderColor='rgba(125, 211, 192, 0.3)'">
                     <i class="fas fa-file-import"></i>&nbsp;&nbsp;Import Profile
-                    <input type="file" id="importProfileInput" accept=".nautilusprofile" onchange="importProfile(event)"
+                    <input type="file" id="importProfileInput" accept=".funschoolworkprofile" onchange="importProfile(event)"
                         style="display: none;">
                 </label>
                 <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.75rem; text-align: center;">
@@ -353,13 +353,13 @@
     <div id="commandLineMode">
         <div class="cli-terminal" id="cliTerminal">
             <div class="cli-line" style="color: var(--accent);">
-                NautilusOS Command Line Interface v1.0
+                funschoolworkOS Command Line Interface v1.0
             </div>
             <div class="cli-line" style="color: #888; margin-bottom: 1rem;">
                 Type 'help' for available commands, 'gui' to switch to graphical mode
             </div>
             <div class="cli-line">
-                <span class="cli-prompt">user@nautilusos:~$</span>
+                <span class="cli-prompt">user@funschoolworkos:~$</span>
                 <input type="text" class="cli-input" id="cliInput" onkeypress="handleCLIInput(event)" />
             </div>
         </div>
@@ -368,7 +368,7 @@
     <div id="desktop">
         <div class="wallpaper">
             <i class="fas fa-fish wallpaper-icon"></i>
-            <div class="wallpaper-text">NautilusOS</div>
+            <div class="wallpaper-text">funschoolworkOS</div>
             <p class="wallpaper-byline">by dinguschan</p>
         </div>
 
@@ -410,7 +410,7 @@
                 <i class="fas fa-trophy"></i> <span>Achievements</span>
             </div>
             <div class="desktop-icon" ondblclick="openApp('browser')" data-app="browser">
-                <i class="fas fa-globe"></i> <span>Nautilus Browser</span>
+                <i class="fas fa-globe"></i> <span>funschoolwork Browser</span>
             </div>
         </div>
         <div class="taskbar">
@@ -476,7 +476,7 @@
                     <i class="fas fa-terminal"></i> <span>Terminal</span>
                 </div>
                 <div class="app-item" onclick="openApp('browser')">
-                    <i class="fas fa-globe"></i> <span>Nautilus Browser</span>
+                    <i class="fas fa-globe"></i> <span>funschoolwork Browser</span>
                 </div>
                 <div class="app-item" onclick="openApp('settings')">
                     <i class="fas fa-cog"></i> <span>Settings</span>
