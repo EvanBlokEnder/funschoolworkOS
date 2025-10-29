@@ -1,94 +1,165 @@
+# 🧩 funschoolworkOS
 
-# `WE NEED TO SEEK FUNDING FOR DOMAIN! SEE DOMAIN IDEAS FOR MORE DETAILS`
-## NautilusOS
-
-NautilusOS is a web-based operating system built entirely in HTML, CSS, and JS—and it’s my biggest project yet!!  
-Boot it up, log in, and mess around like it’s a real desktop with apps, an app store, windows, a file explorer, taskbar, and more.
-
----
-
-## ✨ features
-
-There’s a ton of stuff to play with, but here’s a quick rundown (seriously, check them all out yourself):
-
-- bootloader, account setup, and login screen  
-- fully animated desktop environment  
-- draggable + resizable windows  
-- taskbar with running app indicators  
-- start menu with user info and apps grid  
-- file explorer with folders, files, and side tree  
-- built-in text editor  
-- super duper cool proxied browser
-- cloaking and various other settings 
-- terminal
-- built-in app store
-- exportable profiles
-- context menus  
-- startup and tools panels  
-- smooth transitions, gradients, and clean UI  
-
-Basically... a whole little OS in your browser :D
+> **Notice of Modifications (AGPL-3.0 §5(a))**  
+> This project is a **modified fork** of [NautilusOS](https://github.com/nautilus-os/NautilusOS).  
+> **Date of modification:** 2025-10-28  
+> **Summary of changes:** project renamed (“NautilusOS” → “funschoolworkOS”); string and branding replacements in `index.html` and `js/main.js`; removal of the “Games” section; addition of theme/font links.  
+>  
+> Copyright © 2024 – 2025 original authors: **dinguschan**, **x8rr**, **lanefiedler-731**.  
+> This fork remains licensed under **AGPL-3.0**. All original copyright and license notices are retained.  
+> If you run this software over a network, you must offer the complete corresponding source to users.
 
 ---
 
-## 🚧 todos
+## 💻 About
 
+funschoolworkOS is a web-based desktop environment written entirely in HTML, CSS, and JavaScript.  
+It boots directly in the browser, offering a virtual file system, window management, and built-in applications.  
 
-- [ ] App store improvements (right now it can only install built-in apps)
-- [ ] Add a feature to confirm page closing to stop Securly, GoGuardian, Hapara etc.
-- [ ] Add an option to increase or decrease window transparency 
-- [ ] Window animation settings
-- [ ] Make taskbar autohide
-- [ ] Embed V86 (lanefiedler-731's job)
-- [ ] Fix styles on proxy list dropdown menu (xor)
-- [ ] Add previews to all apps and themes
-- [ ] Make music player search with itunes and play with ub youtube
-- [ ] Add a scramjet proxy (xor)
-- [ ] Wisp server selection (xor)
-- [ ] Better file system
-- [ ] Fix [object promise] bug when creating new folder
-- [ ] Importing saves (anyone can take this)
-- [ ] Multiple accounts
-
-*Completed tasks remain visible for ~24 hours before being manully cleared.*
+This fork is primarily a **branding experiment** and **UI study**.  
+No functional or architectural features were added beyond the original NautilusOS.
 
 ---
 
-## 🌐 domain ideas
+## ⚙️ Features
 
-- `nautilusos.app` $14.20/year at cloudflare or
-- `nautilusos.me` $2.99/first year at dreamhost
-- `nautliusos.xyz` $2.00/year at namecheap (some 90% off deal)
-- `nautiluson.top` $4.63/year at porkbun 
----
+- Bootloader and login sequence  
+- Animated desktop environment  
+- Window management (drag, resize, focus)  
+- Taskbar with active-app indicators  
+- File explorer and app store  
+- Built-in apps: terminal, browser, text editor, calculator, and more  
 
-## 🖼 screenshots (this is like 5% of the entire project, check it out to see it all yourself!!)
-
-<img width="1918" height="897" alt="image" src="https://github.com/user-attachments/assets/c8911ec5-7748-4287-ba48-4370a44608be" />
-<img width="1917" height="906" alt="image" src="https://github.com/user-attachments/assets/8d853477-0fb4-45f1-a3cb-3e88169eb765" />
-<img width="1918" height="871" alt="image" src="https://github.com/user-attachments/assets/40f6ad60-ff23-4e26-9772-7aac5746bddf" />
-<img width="1918" height="906" alt="image" src="https://github.com/user-attachments/assets/13b106be-49c5-416f-bf01-b5915491eb88" />
-<img width="1916" height="912" alt="image" src="https://github.com/user-attachments/assets/633fd5c8-ba2e-4e95-b6b7-71c8e6cf0d4b" />
-<img width="1916" height="908" alt="image" src="https://github.com/user-attachments/assets/26fec667-6acf-4dc5-bd43-be6872560482" />
-<img width="1918" height="911" alt="image" src="https://github.com/user-attachments/assets/b042fbf3-fd80-4b53-9a1f-bc62da8e6424" />
-<img width="1918" height="916" alt="image" src="https://github.com/user-attachments/assets/b72f59ce-22da-458e-b6ef-c340288edfce" />
+All core functionality originates from NautilusOS.
 
 ---
 
-## 💡 more about
+## 🪪 License
 
-This is mostly just a fun UI sandbox with no backend or external data storage. It just seemed like the logical next step after Helios Browser.  
-Everything runs client-side.  
-Built with just HTML, CSS, and JS (no frameworks, no CDNs except icons/fonts)
-
----
-
-## 🧠 try it
-
-Open the NautilusOS-OneFile/index.html file in your browser. That’s it. 
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.  
+A copy of the license text is included in the [LICENSE](LICENSE) file.  
+You must preserve this license and provide prominent attribution when redistributing or modifying the software.
 
 ---
 
-## 🧩 credits
+## 🧩 Credits
 
-Developed by dinguschan, x8rr, and lanefiedler-731
+Developed by **dinguschan**, **x8rr**, and **lanefiedler-731**.  
+**EvanBlokEnder** was **not involved** in the creation of this application.  
+For the original project, see 👉 [https://github.com/nautilus-os/NautilusOS](https://github.com/nautilus-os/NautilusOS).
+
+# 🧩 funschoolworkOS
+
+> **Notice of Modifications (AGPL-3.0 §5(a))**  
+> This project is a **modified fork** of [NautilusOS](https://github.com/nautilus-os/NautilusOS).  
+> **Date of modification:** 2025-10-28  
+> **Summary of changes:** project renamed (“NautilusOS” → “funschoolworkOS”); string and branding replacements in `index.html` and `js/main.js`; removal of the “Games” section; addition of theme/font links.  
+>  
+> Copyright © 2024 – 2025 original authors: **dinguschan**, **x8rr**, **lanefiedler-731**.  
+> This fork remains licensed under **AGPL-3.0**. All original copyright and license notices are retained.  
+> If you run this software over a network, you must offer the complete corresponding source to users.
+
+---
+
+## 💻 About
+
+funschoolworkOS is a web-based desktop environment written entirely in HTML, CSS, and JavaScript.  
+It boots directly in the browser, offering a virtual file system, window management, and built-in applications.  
+
+This fork is primarily a **branding experiment** and **UI study**.  
+No functional or architectural features were added beyond the original NautilusOS.
+
+---
+
+## ⚙️ Features
+
+- Bootloader and login sequence  
+- Animated desktop environment  
+- Window management (drag, resize, focus)  
+- Taskbar with active-app indicators  
+- File explorer and app store  
+- Built-in apps: terminal, browser, text editor, calculator, and more  
+
+All core functionality originates from NautilusOS.
+
+---
+
+## 🪪 License
+
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.  
+A copy of the license text is included in the [LICENSE](LICENSE) file.  
+You must preserve this license and provide prominent attribution when redistributing or modifying the software.
+
+---
+
+## 🧩 Credits
+
+Developed by **dinguschan**, **x8rr**, and **lanefiedler-731**.  
+**EvanBlokEnder** was **not involved** in the creation of this application.  
+For the original project, see 👉 [https://github.com/nautilus-os/NautilusOS](https://github.com/nautilus-os/NautilusOS).
+# 🧩 funschoolworkOS
+
+> **Notice of Modifications (AGPL-3.0 §5(a))**  
+> This project is a **modified fork** of [NautilusOS](https://github.com/nautilus-os/NautilusOS).  
+> **Date of modification:** 2025-10-28  
+> **Summary of changes:** project renamed (“NautilusOS” → “funschoolworkOS”); string and branding replacements in `index.html` and `js/main.js`; removal of the “Games” section; addition of theme/font links.  
+>  
+> Copyright © 2024 – 2025 original authors: **dinguschan**, **x8rr**, **lanefiedler-731**.  
+> This fork remains licensed under **AGPL-3.0**. All original copyright and license notices are retained.  
+> If you run this software over a network, you must offer the complete corresponding source to users.
+
+---
+
+## 💻 About
+
+funschoolworkOS is a web-based desktop environment written entirely in HTML, CSS, and JavaScript.  
+It boots directly in the browser, offering a virtual file system, window management, and built-in applications.  
+
+This fork is primarily a **branding experiment** and **UI study**.  
+No functional or architectural features were added beyond the original NautilusOS.
+
+---
+
+## ⚙️ Features
+
+- Bootloader and login sequence  
+- Animated desktop environment  
+- Window management (drag, resize, focus)  
+- Taskbar with active-app indicators  
+- File explorer and app store  
+- Built-in apps: terminal, browser, text editor, calculator, and more  
+
+All core functionality originates from NautilusOS.
+
+---
+
+## 🪪 License
+
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.  
+A copy of the license text is included in the [LICENSE](LICENSE) file.  
+You must preserve this license and provide prominent attribution when redistributing or modifying the software.
+
+---
+
+## 🧩 Credits
+
+Developed by **dinguschan**, **x8rr**, and **lanefiedler-731**.  
+**EvanBlokEnder** was **not involved** in the creation of this application.  
+For the original project, see 👉 [https://github.com/nautilus-os/NautilusOS](https://github.com/nautilus-os/NautilusOS).
+
+---
+
+### ✉️ A note from the developers
+
+This repository is not an official release of NautilusOS.
+It began as a direct copy of our open-source project and was later renamed.
+While forks are allowed under the AGPL-3.0 license, please remember that the
+license requires crediting the original authors and including a clear note of
+modifications with the date of change.
+
+If you want to explore or contribute to the genuine NautilusOS project,
+please visit the official repository:  
+👉 https://github.com/nautilus-os/NautilusOS
+
+We welcome respectful experimentation and learning—just keep it open, honest,
+and properly credited. That’s how open source thrives.
